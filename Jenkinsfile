@@ -12,7 +12,7 @@ pipeline {
                 sh './gradlew sonarqube'
                 } */
 
-                withSonarQubeEnv(credentialsId: 'sonar-token') {
+                withSonarQubeEnv('sonarqube-community') {
                 sh "./gradlew sonarqube"
                 }
 
