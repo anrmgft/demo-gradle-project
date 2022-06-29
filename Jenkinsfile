@@ -1,6 +1,14 @@
 pipeline {
     agent any
     stages {
+    stage('Registry') {
+                steps{
+                    withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'pass', usernameVariable: 'user')]) {
+                       sh "echo '${pass}' | docker login ghcr.io -u anrmgft --password-stdin"
+                    }
+
+
+                }
         stage('Build') {
             steps {
 
@@ -9,10 +17,12 @@ pipeline {
                 } */
 
                 withGradle {
-                    sh "./gradlew test"
+                    sh "./gradlew publish"
                     }
             }
         }
+
+
        /* stage('Publish') {
             steps{
                 sshagent(['github-ssh']) {
