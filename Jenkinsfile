@@ -8,7 +8,9 @@ pipeline {
                 sh "./gradlew sonarqube"
                 } */
 
-
+                withGradle {
+                    sh "./gradlew test"
+                    }
             }
         }
        stage('Publish') {
