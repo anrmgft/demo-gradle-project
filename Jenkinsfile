@@ -3,23 +3,23 @@ pipeline {
     stages {
     stage('Registry') {
                 steps{
-                    withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'pass', usernameVariable: 'user')]) {
-                       sh "echo '${pass}' | docker login ghcr.io -u anrmgft --password-stdin"
+                    withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'TOKEN', usernameVariable: 'USERNAME')]) {
+                       sh "./gradlew publish"
                     }
                     }
                 }
-        stage('Build') {
+        /* stage('Build') {
             steps {
 
-                /* withSonarQubeEnv('sonarqube-community') {
+                 *//* withSonarQubeEnv('sonarqube-community') {
                 sh "./gradlew sonarqube"
-                } */
+                } *//*
 
                 withGradle {
                     sh "./gradlew publish"
                     }
             }
-        }
+        } */
 
 
        /* stage('Publish') {
