@@ -16,7 +16,7 @@ pipeline {
                 } */
 
                 withGradle {
-                    sh "./gradlew test"
+                    sh "./gradlew publish"
                     }
             }
         }
