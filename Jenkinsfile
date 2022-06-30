@@ -8,7 +8,7 @@ pipeline {
                     }
                     }
                 } */
-    stage('NEXUS') {
+    stage('Registry') {
                     steps{
                         withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'TOKEN', usernameVariable: 'USERNAME'), usernamePassword(credentialsId: 'SonatypeNexus', passwordVariable: 'NEXUSPASSWORD', usernameVariable: 'NEXUSUSERNAME')]) {
                            sh "./gradlew publish"
