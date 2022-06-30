@@ -12,30 +12,20 @@ group = 'com.example'
 version = "1.0.0"
 sourceCompatibility = '11'
 
-nexusPublishing {
-    repositories {
-        myNexus {
-            nexusUrl = uri("http://localhost:9084/staging")
-            snapshotRepositoryUrl = uri("http://localhost:9084/snapshots")
-            //nexusUrl = uri("https://your-server.com/staging")
-            //snapshotRepositoryUrl = uri("https://your-server.com/snapshots")
-            username = "admin" // defaults to project.properties["myNexusUsername"]
-            password = "NEXUSPASSWORD" // defaults to project.properties["myNexusPassword"]
-            //password = "Sinensia*22"
-        }
-    }
-}
+
 
 publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/anrmgft/demo-gradle-project")
+            url = uri("http://localhost:9084/repository/Nexusprueba/")
+             allowInsecureProtocol = true
             credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
+                username = project.findProperty("gpr.user") ?: System.getenv("NEXUSUSERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("NEXUSPASSWORD")
             }
         }
+
     }
     publications {
         bootJava(MavenPublication) {

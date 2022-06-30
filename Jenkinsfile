@@ -1,17 +1,17 @@
 pipeline {
     agent any
     stages {
-    stage('Registry') {
+    /* stage('Registry') {
                 steps{
                     withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'TOKEN', usernameVariable: 'USERNAME')]) {
                        sh "./gradlew publish"
                     }
                     }
-                }
+                } */
     stage('NEXUS') {
                     steps{
                         withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'NEXUSPASSWORD', usernameVariable: 'NEXUSUSERNAME')]) {
-                           sh "./gradlew publishToMyNexus"
+                           sh "./gradlew publish"
                         }
                         }
                     }
