@@ -10,7 +10,7 @@ pipeline {
                 } */
     stage('NEXUS') {
                     steps{
-                        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'NEXUSPASSWORD', usernameVariable: 'NEXUSUSERNAME')]) {
+                        withCredentials([usernamePassword(credentialsId: 'SonatypeNexus', passwordVariable: 'NEXUSPASSWORD', usernameVariable: 'NEXUSUSERNAME')]) {
                            sh "./gradlew publish"
                         }
                         }
