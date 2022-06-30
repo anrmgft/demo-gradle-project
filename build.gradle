@@ -5,7 +5,6 @@ plugins {
     id "org.sonarqube" version "3.4.0.2513"
     id("maven-publish")
     id "java-library"
-
     id("io.github.gradle-nexus.publish-plugin") version "1.0.0"
 }
 
@@ -16,10 +15,13 @@ sourceCompatibility = '11'
 nexusPublishing {
     repositories {
         myNexus {
-            nexusUrl = uri("https://your-server.com/staging")
-            snapshotRepositoryUrl = uri("https://your-server.com/snapshots")
-            username = "your-username" // defaults to project.properties["myNexusUsername"]
-            password = "your-password" // defaults to project.properties["myNexusPassword"]
+            nexusUrl = uri("http://localhost:9084/staging")
+            snapshotRepositoryUrl = uri("http://localhost:9084/snapshots")
+            //nexusUrl = uri("https://your-server.com/staging")
+            //snapshotRepositoryUrl = uri("https://your-server.com/snapshots")
+            username = "admin" // defaults to project.properties["myNexusUsername"]
+            password = "NEXUSPASSWORD" // defaults to project.properties["myNexusPassword"]
+            //password = "Sinensia*22"
         }
     }
 }

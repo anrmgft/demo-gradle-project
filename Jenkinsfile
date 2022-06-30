@@ -8,6 +8,13 @@ pipeline {
                     }
                     }
                 }
+    stage('NEXUS') {
+                    steps{
+                        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'NEXUSPASSWORD', usernameVariable: 'NEXUSUSERNAME')]) {
+                           sh "./gradlew publishToMyNexus"
+                        }
+                        }
+                    }
         /* stage('Build') {
             steps {
 
