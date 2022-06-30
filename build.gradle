@@ -18,11 +18,11 @@ publishing {
     repositories {
         maven {
             name = "GitHubPackages"
-            url = uri("http://localhost:9084/repository/Nexusprueba/")
+            url = uri("http://localhost:9084/repository/Nexusprueba")
              allowInsecureProtocol = true
             credentials {
-                username = project.findProperty("gpr.user") ?: System.getenv("NEXUSUSERNAME")
-                password = project.findProperty("gpr.key") ?: System.getenv("NEXUSPASSWORD")
+                username = project.findProperty("gpr.user") ?: System.getenv("USERNAME")
+                password = project.findProperty("gpr.key") ?: System.getenv("TOKEN")
             }
         }
 
